@@ -10,15 +10,39 @@ datasource db {
 model User { 
   id    Int     @id @default(autoincrement()) 
   email String  @unique
+  emailVerified Boolean  @default(false)
   name  String?
-  posts Post[]
+  username String  @unique
+  hashedPassword String
+  image  String?
+
+  Account Account[]
+  session session[]
+
 } 
 
-model Post { 
-  id        Int     @id @default(autoincrement()) 
-  title     String
-  content   String?
-  published Boolean @default(false) 
-  author    User    @relation(fields: [authorId], references: [id]) 
-  authorId  Int
-} 
+model Account {
+  id  Int  @id @default(autoincrement())
+  userId  Int
+  type  String
+  Provider  String
+  ProviderAccountId  String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model session {
+  id  Int  @id @default(autoincrement())
+  sessionToken String @unique
+  userId Int
+  expires DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

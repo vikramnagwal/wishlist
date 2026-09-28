@@ -7,18 +7,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.3",
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "7.10.0",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "next": "16.3.4",
     "next-auth": "5.0.0-beta.32",
+    "next-safe-action": "^8.7.3",
     "pg": "^8.23.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -32,5 +36,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@12.5.1"
 }

@@ -19,12 +19,13 @@ export const checkUsernameExists = actionClient
             where: { username: username}
         })
         
-        // return false if it does not exist and true if it exists
-        if (!existingUsername) {
+                // false means it exists
+        if (existingUsername) {
             return false
         }
-        // true means it exists
+
+                // return true if it does not exist and true if it exists
         const cookieStore = await cookies();
-        await cookieStore.set(usernameCookies, username)
+        cookieStore.set(usernameCookies, username)
         return true
     })

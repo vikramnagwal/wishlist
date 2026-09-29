@@ -1,11 +1,10 @@
-import { UsernameForm } from '@/ui/auth/register/username-form';
-import React from 'react'
+import { GoogleSignup } from '@/ui/auth/register/google-sso';
 
 const SignUp = () => {
   return (
     <div>
         SignUp
-        <UsernameForm />
+        <GoogleSignup />
     </div>
   )
 }

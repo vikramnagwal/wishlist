@@ -18,13 +18,13 @@ export const checkUsernameExists = actionClient
        const existingUsername = await prisma.user.findUnique({
             where: { username: username}
         })
-        
+
                 // false means it exists
         if (existingUsername) {
             return false
         }
 
-                // return true if it does not exist and true if it exists
+        // return true if it does not exist and true if it exists
         const cookieStore = await cookies();
         cookieStore.set(usernameCookies, username)
         return true
